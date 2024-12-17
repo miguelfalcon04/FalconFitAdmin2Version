@@ -687,6 +687,7 @@ export interface ApiExerciseExercise extends Schema.CollectionType {
     singularName: 'exercise';
     pluralName: 'exercises';
     displayName: 'Exercise';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -709,6 +710,7 @@ export interface ApiExerciseExercise extends Schema.CollectionType {
       'manyToOne',
       'api::userff.userff'
     >;
+    description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
