@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "exercises",
+  "info": {
+    "singularName": "exercise",
+    "pluralName": "exercises",
+    "displayName": "Exercise"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "machine": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::machine.machine",
+      "inversedBy": "exercises"
+    },
+    "supersets": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::superset.superset",
+      "mappedBy": "exercises"
+    },
+    "userff": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::userff.userff",
+      "inversedBy": "exercises"
+    }
+  }
+}

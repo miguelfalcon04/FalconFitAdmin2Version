@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "userffs",
+  "info": {
+    "singularName": "userff",
+    "pluralName": "userffs",
+    "displayName": "Userff",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "username": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "supersets": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::superset.superset",
+      "mappedBy": "userff"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "userff"
+    },
+    "exercises": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::exercise.exercise",
+      "mappedBy": "userff"
+    }
+  }
+}

@@ -631,7 +631,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
     username: Attribute.String &
@@ -660,6 +659,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
+    userff: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToOne',
+      'api::userff.userff'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -670,6 +674,211 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'plugin::users-permissions.user',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiExerciseExercise extends Schema.CollectionType {
+  collectionName: 'exercises';
+  info: {
+    singularName: 'exercise';
+    pluralName: 'exercises';
+    displayName: 'Exercise';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    subtitle: Attribute.String;
+    machine: Attribute.Relation<
+      'api::exercise.exercise',
+      'manyToOne',
+      'api::machine.machine'
+    >;
+    supersets: Attribute.Relation<
+      'api::exercise.exercise',
+      'manyToMany',
+      'api::superset.superset'
+    >;
+    userff: Attribute.Relation<
+      'api::exercise.exercise',
+      'manyToOne',
+      'api::userff.userff'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::exercise.exercise',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::exercise.exercise',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiMachineMachine extends Schema.CollectionType {
+  collectionName: 'machines';
+  info: {
+    singularName: 'machine';
+    pluralName: 'machines';
+    displayName: 'Machine';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    subtitle: Attribute.String;
+    description: Attribute.Text;
+    photo: Attribute.Media;
+    exercises: Attribute.Relation<
+      'api::machine.machine',
+      'oneToMany',
+      'api::exercise.exercise'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::machine.machine',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::machine.machine',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPlacePlace extends Schema.CollectionType {
+  collectionName: 'places';
+  info: {
+    singularName: 'place';
+    pluralName: 'places';
+    displayName: 'Place';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    latitud: Attribute.Float;
+    longitud: Attribute.Float;
+    description: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::place.place',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::place.place',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSupersetSuperset extends Schema.CollectionType {
+  collectionName: 'supersets';
+  info: {
+    singularName: 'superset';
+    pluralName: 'supersets';
+    displayName: 'Superset';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    userff: Attribute.Relation<
+      'api::superset.superset',
+      'manyToOne',
+      'api::userff.userff'
+    >;
+    exercises: Attribute.Relation<
+      'api::superset.superset',
+      'manyToMany',
+      'api::exercise.exercise'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::superset.superset',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::superset.superset',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiUserffUserff extends Schema.CollectionType {
+  collectionName: 'userffs';
+  info: {
+    singularName: 'userff';
+    pluralName: 'userffs';
+    displayName: 'Userff';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    username: Attribute.String;
+    email: Attribute.Email;
+    supersets: Attribute.Relation<
+      'api::userff.userff',
+      'oneToMany',
+      'api::superset.superset'
+    >;
+    users_permissions_user: Attribute.Relation<
+      'api::userff.userff',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    exercises: Attribute.Relation<
+      'api::userff.userff',
+      'oneToMany',
+      'api::exercise.exercise'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::userff.userff',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::userff.userff',
       'oneToOne',
       'admin::user'
     > &
@@ -693,6 +902,11 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::exercise.exercise': ApiExerciseExercise;
+      'api::machine.machine': ApiMachineMachine;
+      'api::place.place': ApiPlacePlace;
+      'api::superset.superset': ApiSupersetSuperset;
+      'api::userff.userff': ApiUserffUserff;
     }
   }
 }
