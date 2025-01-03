@@ -38,6 +38,12 @@
     },
     "description": {
       "type": "text"
+    },
+    "userId": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "exercises"
     }
   }
 }

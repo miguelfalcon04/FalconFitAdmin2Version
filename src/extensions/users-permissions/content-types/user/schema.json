@@ -70,6 +70,12 @@
       "relation": "oneToOne",
       "target": "api::userff.userff",
       "inversedBy": "users_permissions_user"
+    },
+    "exercises": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::exercise.exercise",
+      "inversedBy": "userId"
     }
   }
 }
