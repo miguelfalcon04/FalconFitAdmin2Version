@@ -76,6 +76,12 @@
       "relation": "manyToMany",
       "target": "api::exercise.exercise",
       "inversedBy": "userId"
+    },
+    "supersets": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::superset.superset",
+      "mappedBy": "userId"
     }
   }
 }

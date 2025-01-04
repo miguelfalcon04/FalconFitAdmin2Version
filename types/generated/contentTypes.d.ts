@@ -669,6 +669,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToMany',
       'api::exercise.exercise'
     >;
+    supersets: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'manyToMany',
+      'api::superset.superset'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -817,6 +822,7 @@ export interface ApiSupersetSuperset extends Schema.CollectionType {
     singularName: 'superset';
     pluralName: 'supersets';
     displayName: 'Superset';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -832,6 +838,11 @@ export interface ApiSupersetSuperset extends Schema.CollectionType {
       'api::superset.superset',
       'manyToMany',
       'api::exercise.exercise'
+    >;
+    userId: Attribute.Relation<
+      'api::superset.superset',
+      'manyToMany',
+      'plugin::users-permissions.user'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

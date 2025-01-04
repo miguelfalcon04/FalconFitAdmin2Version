@@ -4,7 +4,8 @@
   "info": {
     "singularName": "superset",
     "pluralName": "supersets",
-    "displayName": "Superset"
+    "displayName": "Superset",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -24,6 +25,12 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::exercise.exercise",
+      "inversedBy": "supersets"
+    },
+    "userId": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
       "inversedBy": "supersets"
     }
   }
