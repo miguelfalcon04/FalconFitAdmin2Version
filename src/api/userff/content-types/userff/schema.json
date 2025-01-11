@@ -12,11 +12,8 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "username": {
+    "surname": {
       "type": "string"
-    },
-    "email": {
-      "type": "email"
     },
     "supersets": {
       "type": "relation",
@@ -24,17 +21,20 @@
       "target": "api::superset.superset",
       "mappedBy": "userff"
     },
-    "users_permissions_user": {
+    "user": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user",
-      "mappedBy": "userff"
+      "inversedBy": "userff"
     },
     "exercises": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::exercise.exercise",
       "mappedBy": "userff"
+    },
+    "name": {
+      "type": "string"
     }
   }
 }

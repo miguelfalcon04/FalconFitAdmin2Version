@@ -659,11 +659,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
-    userff: Attribute.Relation<
-      'plugin::users-permissions.user',
-      'oneToOne',
-      'api::userff.userff'
-    >;
     exercises: Attribute.Relation<
       'plugin::users-permissions.user',
       'manyToMany',
@@ -673,6 +668,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'plugin::users-permissions.user',
       'manyToMany',
       'api::superset.superset'
+    >;
+    userff: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToOne',
+      'api::userff.userff'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -874,14 +874,13 @@ export interface ApiUserffUserff extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    username: Attribute.String;
-    email: Attribute.Email;
+    surname: Attribute.String;
     supersets: Attribute.Relation<
       'api::userff.userff',
       'oneToMany',
       'api::superset.superset'
     >;
-    users_permissions_user: Attribute.Relation<
+    user: Attribute.Relation<
       'api::userff.userff',
       'oneToOne',
       'plugin::users-permissions.user'
@@ -891,6 +890,7 @@ export interface ApiUserffUserff extends Schema.CollectionType {
       'oneToMany',
       'api::exercise.exercise'
     >;
+    name: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
