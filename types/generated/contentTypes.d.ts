@@ -711,6 +711,7 @@ export interface ApiExerciseExercise extends Schema.CollectionType {
       'api::userff.userff'
     >;
     description: Attribute.Text;
+    photo: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
