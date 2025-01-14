@@ -65,11 +65,23 @@
       "inversedBy": "users",
       "configurable": false
     },
+    "exercises": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::exercise.exercise",
+      "inversedBy": "userId"
+    },
+    "supersets": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::superset.superset",
+      "mappedBy": "userId"
+    },
     "userff": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::userff.userff",
-      "inversedBy": "users_permissions_user"
+      "mappedBy": "user"
     }
   }
 }
