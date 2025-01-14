@@ -39,7 +39,6 @@
     "description": {
       "type": "text"
     },
-<<<<<<< HEAD
     "photo": {
       "allowedTypes": [
         "images",
@@ -49,13 +48,12 @@
       ],
       "type": "media",
       "multiple": true
-=======
+    },
     "userId": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "plugin::users-permissions.user",
       "inversedBy": "exercises"
->>>>>>> 861e7caac76cb994c264ab978f5ecfdff4cbe2a5
     }
   }
 }

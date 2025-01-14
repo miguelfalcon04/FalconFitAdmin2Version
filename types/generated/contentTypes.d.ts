@@ -721,15 +721,12 @@ export interface ApiExerciseExercise extends Schema.CollectionType {
       'api::userff.userff'
     >;
     description: Attribute.Text;
-<<<<<<< HEAD
     photo: Attribute.Media;
-=======
     userId: Attribute.Relation<
       'api::exercise.exercise',
       'manyToMany',
       'plugin::users-permissions.user'
     >;
->>>>>>> 861e7caac76cb994c264ab978f5ecfdff4cbe2a5
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
